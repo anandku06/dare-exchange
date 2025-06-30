@@ -2,14 +2,7 @@
 
 {% load static %}
 
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
-{% endblock %}
-
 {% block body %}
-    <!-- Navigation -->
-    {% include 'nav.html' %}
-    
     <!-- Hero Section -->
     {% include 'home_comps/hero.html' %}
     
@@ -18,7 +11,4 @@
     
     <!-- CTA Section -->
     {% include 'home_comps/cta.html' %}
-    
-    <!-- Footer -->
-    {% include 'footer.html' %}
 {% endblock %}
