@@ -1,9 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About Us</title>
-</head>
-<body>
-</body>
-</html>
+{% extends 'base.html' %} 
+
+{% load static %} 
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock %} 
+
+{% block body %}
+<section class="about-hero">
+  <div class="container text-center">
+    <h1 class="about-title">
+      About <span class="neon-accent">Dare Exchange</span>
+    </h1>
+    <p class="about-lead">
+      A vibrant platform for college daredevils to challenge, connect, and grow
+      together in a safe, fun, and electrifying environment.
+    </p>
+  </div>
+</section>
+
+<section class="about-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="about-card">
+          <h2 class="neon-section">Our Mission</h2>
+          <p>
+            At <span class="neon-accent">Dare Exchange</span>, we believe in
+            pushing boundaries and building confidence through creative
+            challenges. Our platform is designed to foster courage, friendship,
+            and personal growth, all while ensuring safety and inclusivity for
+            every participant.
+          </p>
+        </div>
+        <div class="about-card">
+          <h2 class="neon-section">How It Works</h2>
+          <ul class="about-list">
+            <li>
+              <span class="neon-bullet">&#9733;</span> Discover and accept dares
+              tailored to your interests and courage level.
+            </li>
+            <li>
+              <span class="neon-bullet">&#9733;</span> Connect with fellow
+              students, share your victories, and inspire others.
+            </li>
+            <li>
+              <span class="neon-bullet">&#9733;</span> Earn badges and climb the
+              leaderboard as you complete more challenges.
+            </li>
+            <li>
+              <span class="neon-bullet">&#9733;</span> All dares are reviewed
+              for safety and appropriateness by our team.
+            </li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h2 class="neon-section">Why Join?</h2>
+          <p>
+            Whether you're looking to break out of your comfort zone, make new
+            friends, or just have fun,
+            <span class="neon-accent">Dare Exchange</span> is your go-to
+            platform for unforgettable college memories. Join us and let your
+            courage shine!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
