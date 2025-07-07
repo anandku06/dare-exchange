@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/create_dare.css' %}" />
+{% endblock %} {% block body %}
+<section class="create-dare-hero">
+  <div class="container text-center">
+    <h1 class="create-dare-title">
+      Create a
+      <span
+        style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink)"
+        >Dare</span
+      >
+    </h1>
+    <p class="create-dare-lead">
+      Challenge your friends or the community! Fill out the form below to submit
+      a new dare.
+    </p>
+  </div>
+</section>
+
+<section class="create-dare-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="create-dare-card">
+          <h2 class="create-dare-section">Dare Details</h2>
+          <form class="create-dare-form" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" required />
+            </div>
+            <div class="mb-3">
+              <label for="description">Description</label>
+              <textarea
+                id="description"
+                name="description"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="category">Category</label>
+              <select id="category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="fun">Fun</option>
+                <option value="adventure">Adventure</option>
+                <option value="social">Social</option>
+                <option value="skill">Skill</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="difficulty">Difficulty</label>
+              <select id="difficulty" name="difficulty" required>
+                <option value="">Select Difficulty</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+            <button type="submit">Create Dare</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
