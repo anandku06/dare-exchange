@@ -23,6 +23,10 @@ def create_dare(req):
 
         newDare.save()
 
-        
-
     return render(req, "create_dare.html")
+
+def show_dares(req):
+    dares = DareExchange.objects.all()
+
+    return render(req, 'showDares.html', {"dares" : dares})
+    
