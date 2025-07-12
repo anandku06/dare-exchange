@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import DareExchange
 
 
@@ -22,11 +22,22 @@ def create_dare(req):
         )
 
         newDare.save()
+        return redirect("show_dares")
 
     return render(req, "create_dare.html")
+
 
 def show_dares(req):
     dares = DareExchange.objects.all()
 
-    return render(req, 'showDares.html', {"dares" : dares})
-    
+    return render(req, "showDares.html", {"dares": dares})
+
+
+def delete_dare(req, id):
+    if req.method == "POST":
+        try:
+            dare = DareExchange.objects.get(id=id)
+            dare.delete()
+        except DareExchange.DoesNotExist:
+            pass
+    return redirect("show_dares")

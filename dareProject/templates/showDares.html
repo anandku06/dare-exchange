@@ -1,67 +1,110 @@
-{% extends 'base.html' %}
-
-{% load static %}
- 
-{% block style %}
+{% extends 'base.html' %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/feature.css' %}" />
 <style>
-.show-dares-container {
-    background: #18122B;
+  .show-dares-container {
+    background: #18122b;
     color: #fff;
     padding: 100px 0 40px 0; /* Top padding increased for navbar */
     min-height: 100vh;
-}
-.dare-card {
+  }
+  .dare-card {
     background: #393053;
     border-radius: 16px;
     box-shadow: 0 0 20px var(--neon-pink, #ff2e9a);
     margin-bottom: 32px;
     padding: 32px 24px;
     transition: box-shadow 0.3s;
-}
-.dare-card:hover {
+  }
+  .dare-card:hover {
     box-shadow: 0 0 40px var(--neon-pink, #ff2e9a);
-}
-.dare-title {
+  }
+  .dare-title {
     color: var(--neon-pink, #ff2e9a);
     font-size: 2rem;
     margin-bottom: 12px;
     text-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
-}
-.dare-meta {
+  }
+  .dare-meta {
     font-size: 1rem;
     color: #a3aed6;
     margin-bottom: 8px;
-}
-.dare-description {
+  }
+  .dare-description {
     font-size: 1.1rem;
     margin-bottom: 0;
-}
+  }
 </style>
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
 <section class="show-dares-container">
   <div class="container">
-    <h1 class="text-center" style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink)">All Dares</h1>
+    <h1
+      class="text-center"
+      style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink)"
+    >
+      All Dares
+    </h1>
     <div class="row justify-content-center mt-5">
       <div class="col-lg-10">
-        {% if dares %}
-          {% for dare in dares %}
-            <div class="dare-card mb-4">
-              <div class="dare-title">{{ dare.title }}</div>
-              <div class="dare-meta">
-                Category: <span style="color: #ffb86c">{{ dare.get_category_display }}</span> |
-                Difficulty: <span style="color: #8be9fd">{{ dare.get_difficulty_display }}</span>
-              </div>
-              <p class="dare-description">{{ dare.description }}</p>
-            </div>
-          {% endfor %}
-        {% else %}
-          <div class="dare-card text-center">
-            <p>No dares found. Be the first to create one!</p>
-            <a href="{% url 'create_dare' %}" class="btn btn-primary" style="margin-top: 16px; background: var(--neon-pink, #ff2e9a); border: none; color: #fff; box-shadow: 0 0 10px var(--neon-pink, #ff2e9a); font-weight: bold; padding: 10px 28px; border-radius: 8px; transition: box-shadow 0.3s; text-shadow: 0 0 6px var(--neon-pink, #ff2e9a);">Create Dare</a>
+        {% if dares %} {% for dare in dares %}
+        <div class="dare-card mb-4">
+          <div class="dare-title">{{ dare.title }}</div>
+          <div class="dare-meta">
+            Category:
+            <span style="color: #ffb86c">{{ dare.get_category_display }}</span>
+            | Difficulty:
+            <span style="color: #8be9fd"
+              >{{ dare.get_difficulty_display }}</span
+            >
           </div>
+          <p class="dare-description">{{ dare.description }}</p>
+          <form
+            method="post"
+            action="{% url 'delete_dare' dare.id %}"
+            style="display: inline"
+          >
+            {% csrf_token %}
+            <button
+              type="submit"
+              class="btn btn-danger"
+              style="
+                margin-top: 16px;
+                background: var(--neon-pink, #ff2e9a);
+                border: none;
+                color: #fff;
+                box-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
+                font-weight: bold;
+                padding: 8px 22px;
+                border-radius: 8px;
+                transition: box-shadow 0.3s;
+                text-shadow: 0 0 6px var(--neon-pink, #ff2e9a);
+                cursor: pointer;
+              "
+            >
+              Delete
+            </button>
+          </form>
+        </div>
+        {% endfor %} {% else %}
+        <div class="dare-card text-center">
+          <p>No dares found. Be the first to create one!</p>
+          <a
+            href="{% url 'create_dare' %}"
+            class="btn btn-primary"
+            style="
+              margin-top: 16px;
+              background: var(--neon-pink, #ff2e9a);
+              border: none;
+              color: #fff;
+              box-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
+              font-weight: bold;
+              padding: 10px 28px;
+              border-radius: 8px;
+              transition: box-shadow 0.3s;
+              text-shadow: 0 0 6px var(--neon-pink, #ff2e9a);
+            "
+            >Create Dare</a
+          >
+        </div>
         {% endif %}
       </div>
     </div>
