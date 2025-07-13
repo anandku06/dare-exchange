@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/create_dare.css' %}" />
+{% endblock %}
+{% block body %}
+<section class="create-dare-hero">
+  <div class="container text-center">
+    <h1 class="create-dare-title">
+      Edit
+      <span style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink)">Dare</span>
+    </h1>
+    <p class="create-dare-lead">
+      Update your dare details below.
+    </p>
+  </div>
+</section>
+
+<section class="create-dare-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="create-dare-card">
+          <h2 class="create-dare-section">Edit Dare Details</h2>
+          <form class="create-dare-form" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" value="{{ dare.title }}" required />
+            </div>
+            <div class="mb-3">
+              <label for="description">Description</label>
+              <textarea id="description" name="description" rows="4" required>{{ dare.description }}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="category">Category</label>
+              <select id="category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="fun" {% if dare.category == 'fun' %}selected{% endif %}>Fun</option>
+                <option value="adventure" {% if dare.category == 'adventure' %}selected{% endif %}>Adventure</option>
+                <option value="social" {% if dare.category == 'social' %}selected{% endif %}>Social</option>
+                <option value="skill" {% if dare.category == 'skill' %}selected{% endif %}>Skill</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="difficulty">Difficulty</label>
+              <select id="difficulty" name="difficulty" required>
+                <option value="">Select Difficulty</option>
+                <option value="easy" {% if dare.difficulty == 'easy' %}selected{% endif %}>Easy</option>
+                <option value="medium" {% if dare.difficulty == 'medium' %}selected{% endif %}>Medium</option>
+                <option value="hard" {% if dare.difficulty == 'hard' %}selected{% endif %}>Hard</option>
+              </select>
+            </div>
+            <button type="submit">Update Dare</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

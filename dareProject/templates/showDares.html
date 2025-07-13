@@ -57,32 +57,52 @@
             >
           </div>
           <p class="dare-description">{{ dare.description }}</p>
-          <form
-            method="post"
-            action="{% url 'delete_dare' dare.id %}"
-            style="display: inline"
-          >
-            {% csrf_token %}
-            <button
-              type="submit"
-              class="btn btn-danger"
+          <div style="display: flex; gap: 12px; margin-top: 16px">
+            <a
+              href="{% url 'edit_dare' dare.id %}"
+              class="btn btn-primary"
               style="
-                margin-top: 16px;
-                background: var(--neon-pink, #ff2e9a);
-                border: none;
-                color: #fff;
+                background: transparent;
+                border: 2px solid var(--neon-pink, #ff2e9a);
+                color: var(--neon-pink, #ff2e9a);
                 box-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
                 font-weight: bold;
                 padding: 8px 22px;
                 border-radius: 8px;
-                transition: box-shadow 0.3s;
+                transition: box-shadow 0.3s, background 0.3s, color 0.3s;
                 text-shadow: 0 0 6px var(--neon-pink, #ff2e9a);
                 cursor: pointer;
               "
+              onmouseover="this.style.background='var(--neon-pink, #ff2e9a)';this.style.color='#fff';"
+              onmouseout="this.style.background='transparent';this.style.color='var(--neon-pink, #ff2e9a)';"
+              >Edit</a
             >
-              Delete
-            </button>
-          </form>
+            <form
+              method="post"
+              action="{% url 'delete_dare' dare.id %}"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button
+                type="submit"
+                class="btn btn-danger"
+                style="
+                  background: var(--neon-pink, #ff2e9a);
+                  border: none;
+                  color: #fff;
+                  box-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
+                  font-weight: bold;
+                  padding: 8px 22px;
+                  border-radius: 8px;
+                  transition: box-shadow 0.3s;
+                  text-shadow: 0 0 6px var(--neon-pink, #ff2e9a);
+                  cursor: pointer;
+                "
+              >
+                Delete
+              </button>
+            </form>
+          </div>
         </div>
         {% endfor %} {% else %}
         <div class="dare-card text-center">

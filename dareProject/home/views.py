@@ -41,3 +41,18 @@ def delete_dare(req, id):
         except DareExchange.DoesNotExist:
             pass
     return redirect("show_dares")
+
+def update_dare(req, id):
+    dare = DareExchange.objects.get(id=id)
+
+    if req.method == "POST":
+        dare.title = req.POST.get("title")
+        dare.description = req.POST.get("description")
+        dare.category = req.POST.get("category")
+        dare.difficulty = req.POST.get("difficulty")
+
+        dare.save()
+
+        return redirect("show_dares")
+
+    return render(req, 'edit-dare.html', {"dare" : dare})
