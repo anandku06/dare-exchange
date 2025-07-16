@@ -25,14 +25,96 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 
     {% block style %} {% endblock %}
   </head>
   <body>
-    {% include 'nav.html' %} 
-    {% block body %} {% endblock %} 
-    {% include 'footer.html' %}
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <i class="bi bi-lightning-charge-fill"></i>
+          DARE NEXUS
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="w-100 d-flex align-items-center">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'features' %}">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+              </li>
+            </ul>
+            <a
+              href="{% url 'account' %}"
+              class="btn btn-primary ms-auto"
+              style="
+                background: var(--neon-pink, #ff2e9a);
+                border: none;
+                color: #fff;
+                font-weight: bold;
+                box-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
+                border-radius: 8px;
+                padding: 8px 28px;
+                transition: box-shadow 0.3s, background 0.3s;
+                text-shadow: 0 0 6px var(--neon-pink, #ff2e9a);
+              "
+              >Sign In</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {% block body %} {% endblock %}
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <h5>DARE NEXUS</h5>
+            <p>
+              Pioneering the future of digital challenges in collegiate
+              environments.
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5>SYSTEM</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Initialize</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Protocol</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5>SUPPORT</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Help Desk</a></li>
+              <li><a href="#">Safety Guide</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <h5>NETWORK</h5>
+            <p>© 2025 Dare Nexus. All systems operational.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>

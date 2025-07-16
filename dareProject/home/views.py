@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import DareExchange
 
-
 # Create your views here.
 def home(req):
     return render(req, "home.html")
