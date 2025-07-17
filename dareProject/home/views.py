@@ -3,7 +3,7 @@ from .models import DareExchange
 
 # Create your views here.
 def home(req):
-    return render(req, "home.html")
+    return render(req, "home/home.html")
 
 
 def create_dare(req):
@@ -23,13 +23,13 @@ def create_dare(req):
         newDare.save()
         return redirect("show_dares")
 
-    return render(req, "create_dare.html")
+    return render(req, "home/create_dare.html")
 
 
 def show_dares(req):
     dares = DareExchange.objects.all()
 
-    return render(req, "showDares.html", {"dares": dares})
+    return render(req, "home/showDares.html", {"dares": dares})
 
 
 def delete_dare(req, id):
@@ -54,4 +54,4 @@ def update_dare(req, id):
 
         return redirect("show_dares")
 
-    return render(req, 'edit-dare.html', {"dare" : dare})
+    return render(req, 'home/edit-dare.html', {"dare" : dare})

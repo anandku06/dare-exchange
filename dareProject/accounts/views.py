@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
 # Create your views here.
-def accounts(req):
-
+def register(req):
     if req.method == "POST":
         username = req.POST.get("username")
         email = req.POST.get("email")
@@ -19,4 +18,4 @@ def accounts(req):
         new_user.save()
 
         return redirect('home')
-    return render(req, 'register.html')
+    return render(req, 'accounts/register.html')
