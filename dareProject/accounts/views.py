@@ -19,3 +19,16 @@ def register(req):
 
         return redirect('home')
     return render(req, 'accounts/register.html')
+
+def login_view(req):
+    if req.method == "POST":
+        username = req.POST.get("username")
+        password = req.POST.get("password")
+
+        pass
+
+def logout_view(req):
+    if req.method == "POST":
+        # Assuming you have a logout function in your views
+        return redirect('home')
+    return render(req, 'accounts/logout.html')

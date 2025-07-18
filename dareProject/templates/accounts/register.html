@@ -1,12 +1,6 @@
-{% extends 'base.html' %} 
-
-{% load static %} 
-
-{% block style %}
+{% extends 'base.html' %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/create_dare.css' %}" />
-{% endblock %} 
-
-{% block body %}
+{% endblock %} {% block body %}
 <section class="create-dare-hero">
   <div class="container text-center">
     <h1 class="create-dare-title">
@@ -49,6 +43,20 @@
             </div>
             <button type="submit">Register</button>
           </form>
+          <div class="text-center mt-3">
+            <p style="color: #a3aed6">
+              Already have an account?
+              <a
+                href="{% url 'login' %}"
+                style="
+                  color: var(--neon-pink);
+                  text-decoration: none;
+                  text-shadow: 0 0 6px var(--neon-pink);
+                "
+                >Sign In</a
+              >
+            </p>
+          </div>
         </div>
       </div>
     </div>
