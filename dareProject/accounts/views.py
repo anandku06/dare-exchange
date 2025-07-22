@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 
 # Create your views here.
 def register(req):
@@ -9,8 +10,9 @@ def register(req):
         email = req.POST.get("email")
         password = req.POST.get("password")
 
-        if User.objects.get(username).exists():
-            pass
+        if User.objects.get(username).exists() or User.objects.get(email).exists():
+            messages.add_message(req, messages.ERROR, "Username or Email already exists")
+            return render(req, 'accounts/register.html', {"messages" : messages})
 
         new_user = User.objects.create(
             username = username,

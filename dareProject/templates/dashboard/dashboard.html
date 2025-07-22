@@ -1,0 +1,171 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/feature.css' %}" />
+<style>
+  .dashboard-hero {
+    background: #18122b;
+    color: #fff;
+    padding: 100px 0 40px 0;
+    min-height: 100vh;
+  }
+  .dashboard-section {
+    background: #393053;
+    border-radius: 16px;
+    box-shadow: 0 0 20px var(--neon-pink, #ff2e9a);
+    padding: 32px 24px;
+    margin-bottom: 32px;
+  }
+  .dashboard-title {
+    color: var(--neon-pink, #ff2e9a);
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+    text-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
+    font-family: "Orbitron", "Rajdhani", sans-serif;
+  }
+  .dashboard-label {
+    color: #ffb86c;
+    font-weight: bold;
+  }
+  .dashboard-btn {
+    background: var(--neon-pink, #ff2e9a);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 22px;
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--neon-pink, #ff2e9a);
+    transition: box-shadow 0.3s, background 0.3s;
+    text-shadow: 0 0 6px var(--neon-pink, #ff2e9a);
+    cursor: pointer;
+  }
+  .dashboard-btn:hover {
+    background: #ff2e9a;
+    box-shadow: 0 0 20px var(--neon-pink, #ff2e9a);
+  }
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 32px;
+  }
+  .dashboard-stats-box {
+    background: #232042;
+    border-radius: 12px;
+    padding: 18px 16px;
+    color: #fff;
+    box-shadow: 0 0 10px #ff2e9a44;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .dashboard-creations {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 24px;
+  }
+  .dashboard-creation-card {
+    background: #232042;
+    border-radius: 12px;
+    padding: 18px 12px;
+    color: #fff;
+    box-shadow: 0 0 10px #ff2e9a44;
+    text-align: center;
+    flex: 1;
+  }
+  @media (max-width: 991px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .dashboard-creations {
+      flex-direction: column;
+    }
+  }
+</style>
+{% endblock %} {% block body %}
+<section class="dashboard-hero">
+  <div class="container">
+    <h1 class="dashboard-title text-center">Dashboard</h1>
+    <div class="dashboard-grid">
+      <div class="dashboard-section">
+        <h4 class="dashboard-label">Creative Fun</h4>
+        <!-- Calendar placeholder -->
+        <div
+          style="
+            height: 180px;
+            background: #232042;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 8px #ff2e9a44;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a3aed6;
+          "
+        >
+          Calendar Widget
+        </div>
+      </div>
+      <div class="dashboard-section">
+        <h4 class="dashboard-label">Your Favorite Dares</h4>
+        <ul style="list-style: none; padding-left: 0">
+          <li>Adventures in Space <span class="badge bg-info">Today</span></li>
+          <li>Magic Forest <span class="badge bg-info">Tomorrow</span></li>
+          <li>Treasure Hunt <span class="badge bg-info">Upcoming</span></li>
+        </ul>
+        <button class="dashboard-btn mt-3">View All</button>
+      </div>
+      <div class="dashboard-section">
+        <h4 class="dashboard-label">Notifications</h4>
+        <ul style="list-style: none; padding-left: 0">
+          <li><i class="bi bi-bell"></i> You have new dare ideas!</li>
+          <li><i class="bi bi-check-circle"></i> Your dare was created!</li>
+          <li><i class="bi bi-lightbulb"></i> New prompts available!</li>
+        </ul>
+      </div>
+      <div class="dashboard-section">
+        <h4 class="dashboard-label">Your Library</h4>
+        <div class="dashboard-stats-box">Saved Dares: <strong>5</strong></div>
+        <div class="dashboard-stats-box">
+          Favorite Dares: <strong>4</strong>
+        </div>
+        <div class="dashboard-stats-box">Draft Dares: <strong>2</strong></div>
+        <div class="dashboard-stats-box">
+          Published Dares: <strong>1</strong>
+        </div>
+      </div>
+      <div class="dashboard-section">
+        <h4 class="dashboard-label">New Dare Ideas</h4>
+        <ul style="list-style: none; padding-left: 0">
+          <li>
+            Interactive Dare Series <span class="badge bg-success">New</span>
+          </li>
+          <li>
+            Creative Dare Prompts <span class="badge bg-success">New</span>
+          </li>
+        </ul>
+        <button class="dashboard-btn mt-3">Add Dare</button>
+      </div>
+      <div class="dashboard-section">
+        <h4 class="dashboard-label">Your Stats</h4>
+        <div class="dashboard-stats-box">
+          Dares Created: <strong>12</strong>
+        </div>
+        <div class="dashboard-stats-box">Dares Shared: <strong>9</strong></div>
+        <div class="dashboard-stats-box">
+          Creativity Score: <strong>85%</strong>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-creations">
+      <div class="dashboard-creation-card">Imaginative Thinker</div>
+      <div class="dashboard-creation-card">Creative Genius</div>
+      <div class="dashboard-creation-card">Dare Master</div>
+      <div class="dashboard-creation-card">Adventure Seeker</div>
+      <div class="dashboard-creation-card">New Creator</div>
+      <div class="dashboard-creation-card">Inspiring Challenger</div>
+      <div class="dashboard-creation-card">Night Owl</div>
+      <div class="dashboard-creation-card">Early Bird</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
