@@ -28,6 +28,11 @@
             <div class="mb-3">
               <label for="username">Username</label>
               <input type="text" id="username" name="username" required />
+              {% for message in messages %}
+              <p>
+                {{ message }}
+              </p>
+              {% endfor %}
             </div>
             <div class="mb-3">
               <label for="email">Email</label>

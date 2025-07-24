@@ -10,7 +10,7 @@ def register(req):
         email = req.POST.get("email")
         password = req.POST.get("password")
 
-        if User.objects.get(username).exists() or User.objects.get(email).exists():
+        if User.objects.filter(username=username).exists() or User.objects.filter(email).exists():
             messages.add_message(req, messages.ERROR, "Username or Email already exists")
             return render(req, 'accounts/register.html', {"messages" : messages})
 
@@ -30,6 +30,8 @@ def login_view(req):
     if req.method == "POST":
         username = req.POST.get("username")
         password = req.POST.get("password")
+    
+    return render(req, "accounts/login.html")
 
 
 
